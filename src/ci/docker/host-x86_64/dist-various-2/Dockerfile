@@ -52,6 +52,9 @@ ENV \
     AR_i686_unknown_freebsd=i686-unknown-freebsd11-ar \
     CC_i686_unknown_freebsd=i686-unknown-freebsd11-clang \
     CXX_i686_unknown_freebsd=i686-unknown-freebsd11-clang++ \
+    AR_i586_unknown_freebsd=i686-unknown-freebsd11-ar \
+    CC_i586_unknown_freebsd=i686-unknown-freebsd11-clang \
+    CXX_i586_unknown_freebsd=i686-unknown-freebsd11-clang++ \
     CC=gcc-8 \
     CXX=g++-8
 
@@ -79,6 +82,7 @@ COPY host-x86_64/dist-various-2/build-wasi-toolchain.sh /tmp/
 RUN /tmp/build-wasi-toolchain.sh
 
 COPY scripts/freebsd-toolchain.sh /tmp/
+RUN /tmp/freebsd-toolchain.sh i586
 RUN /tmp/freebsd-toolchain.sh i686
 
 COPY scripts/sccache.sh /scripts/
@@ -106,6 +110,7 @@ ENV TARGETS=$TARGETS,x86_64-fortanix-unknown-sgx
 ENV TARGETS=$TARGETS,nvptx64-nvidia-cuda
 ENV TARGETS=$TARGETS,armv7-unknown-linux-gnueabi
 ENV TARGETS=$TARGETS,armv7-unknown-linux-musleabi
+ENV TARGETS=$TARGETS,i586-unknown-freebsd
 ENV TARGETS=$TARGETS,i686-unknown-freebsd
 
 # As per https://bugs.launchpad.net/ubuntu/+source/gcc-defaults/+bug/1300211

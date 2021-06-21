@@ -42,6 +42,7 @@ rm -rf binutils
 mkdir -p "$sysroot"
 case $arch in
   (x86_64) freebsd_arch=amd64 ;;
+  (i586) freebsd_arch=i386 ;;
   (i686) freebsd_arch=i386 ;;
 esac
 

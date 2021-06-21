@@ -15,7 +15,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   gdb \
   libssl-dev \
   pkg-config \
-  xz-utils
+  xz-utils \
+  zlib1g-dev  
 
 COPY scripts/sccache.sh /scripts/
 RUN sh /scripts/sccache.sh
